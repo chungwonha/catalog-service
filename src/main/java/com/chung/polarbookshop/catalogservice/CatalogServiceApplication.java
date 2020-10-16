@@ -11,6 +11,7 @@ public class CatalogServiceApplication {
 		System.out.println("main");
 		System.out.println("main1234");
 		System.out.println("main5678");
+		System.out.println("main8901");
 		SpringApplication.run(CatalogServiceApplication.class, args);
 	}
 
