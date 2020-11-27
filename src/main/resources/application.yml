@@ -1,3 +1,15 @@
+spring:
+  datasource:
+    username: admin
+    password: admin
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 20
+      pool-name: polardb-pool
+  jpa:
+    hibernate:
+      ddl-auto: validate
 server:
   port: 8001
   tomcat:

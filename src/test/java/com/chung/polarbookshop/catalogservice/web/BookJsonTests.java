@@ -18,7 +18,7 @@ class BookJsonTests {
 
     @Test
     void testSerialize() throws Exception {
-        Book book = new Book("1234567890", "Title", "Author", Year.of(1973));
+        Book book = new Book("1234567890", "Title", "Author", Year.of(1973),12.90);
         assertThat(json.write(book)).extractingJsonPathStringValue("@.isbn")
                 .isEqualTo("1234567890");
         assertThat(json.write(book)).extractingJsonPathStringValue("@.title")
@@ -31,9 +31,9 @@ class BookJsonTests {
 
     @Test
     void testDeserialize() throws Exception {
-        String content = "{\"isbn\":\"1234567890\",\"title\":\"Title\", \"author\":\"Author\", \"publishingYear\":\"1973\"}";
+        String content = "{\"isbn\":\"1234567890\",\"title\":\"Title\", \"author\":\"Author\", \"publishingYear\":\"1973\",\"price\":\"12.90\"}";
         assertThat(json.parse(content))
-                .isEqualToComparingFieldByField(new Book("1234567890", "Title", "Author", Year.of(1973)));
+                .isEqualToComparingFieldByField(new Book("1234567890", "Title", "Author", Year.of(1973),12.90));
         assertThat(json.parseObject(content).getIsbn()).isEqualTo("1234567890");
     }
 }

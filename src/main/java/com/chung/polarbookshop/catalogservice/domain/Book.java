@@ -1,11 +1,14 @@
 package com.chung.polarbookshop.catalogservice.domain;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Pattern;
-import java.time.Year;
+import com.chung.polarbookshop.catalogservice.persistence.BaseEntity;
 
-public class Book {
+import javax.validation.constraints.*;
+import java.time.Year;
+import javax.persistence.*;
+
+@Entity
+public class Book extends BaseEntity {
+
     @NotBlank(message = "The book ISBN must be defined.")
     @Pattern(regexp = "^(97([89]))?\\d{9}(\\d|X)$", message = "The ISBN format must follow the standards ISBN-10 or ISBN-13.")
     private String isbn;
@@ -16,14 +19,23 @@ public class Book {
     @PastOrPresent(message = "The book cannot have been published in the future.")
     private Year publishingYear;
 
+    @NotNull(message = "The book price must be defined.")
+    @Positive(message = "The book price must be greater than zero.")
+    private Double price;
+
+
     // Constructor, getters, and setters
 
+    public  Book(){
+        super();
+    }
 
-    public Book(String isbn, String title, String author, Year publishingYear) {
+    public Book(String isbn, String title, String author, Year publishingYear, Double price) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.publishingYear = publishingYear;
+        this.price = price;
     }
 
     public String getIsbn() {
@@ -56,5 +68,13 @@ public class Book {
 
     public void setPublishingYear(Year publishingYear) {
         this.publishingYear = publishingYear;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
