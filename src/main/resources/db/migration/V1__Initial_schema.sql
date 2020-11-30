@@ -13,3 +13,14 @@ CREATE TABLE book (
       PRIMARY KEY (id),
       UNIQUE (isbn)
 );
+
+
+
+
+
+
+
+
+
+
+
