@@ -11,7 +11,7 @@ spring:
     hibernate:
       ddl-auto: validate
 server:
-  port: 8001
+  port: 9002
   tomcat:
     accept-count: 100
     connection-timeout: 2000

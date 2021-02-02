@@ -4,6 +4,11 @@ plugins {
 	id 'java'
 }
 
+bootBuildImage {
+	imageName = "chungha/catalog-service2:0.0.1"
+	environment = ["BP_JVM_VERSION" : "11.*"]
+}
+
 group = 'com.chung.polarbookshop'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
